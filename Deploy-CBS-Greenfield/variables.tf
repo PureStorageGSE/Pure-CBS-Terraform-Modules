@@ -33,7 +33,7 @@ variable "tags" {
 variable "vnet_address_space" {
   type        = list(any)
   description = "the address space of the VNet"
-  default     = ["10.10.0.0/16"]
+  default     = ["192.168.176.0/20"]
 }
 
 variable "subnets" {
@@ -43,7 +43,7 @@ variable "subnets" {
 variable "cbs_subnet_vms_address" {
   type        = list(any)
   description = "the address space of the initior VMs subnet"
-  default     = ["10.10.0.0/24"]
+  default     = ["192.168.176.0/24"]
 }
 
 variable "array_name" {
