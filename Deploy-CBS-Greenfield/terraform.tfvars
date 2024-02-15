@@ -1,5 +1,5 @@
 #Azure Variables
-# resource_group_name     = "gse-ps-cbs-azure-lab-" #Prefix for Jump Start Deployment Resources
+resource_group_name     = "gse-ps-cbs-azure-lab-" #Prefix for Jump Start Deployment Resources
 #resource_group_name     = "GSE_PS_CBS_TF_VNET_RG"
 resource_group_location = "eastus"              #Region see entries below
 # azure_client_id                       = "xxxxxxxx-xxxx-xxx-xxxx-xxxxxxxxxxxxxx"
