@@ -93,3 +93,10 @@ variable "key_file_path" {
   type = string
 }
 
+variable "plan_publisher" {
+    type = string
+}
+
+variable "plan_version" {
+   type = string
+}
