@@ -1,6 +1,6 @@
 #Azure Variables
 # resource_group_name     = "gse-ps-cbs-azure-lab-" #Prefix for Jump Start Deployment Resources
-resource_group_name     = "GSE_PS_CBS_TF_VNET_RG-"
+#resource_group_name     = "GSE_PS_CBS_TF_VNET_RG"
 resource_group_location = "eastus"              #Region see entries below
 # azure_client_id                       = "xxxxxxxx-xxxx-xxx-xxxx-xxxxxxxxxxxxxx"
 # azure_client_secret                   = "xxxxxxxx-xxxx-xxx-xxxx-xxxxxxxxxxxxxx"
@@ -69,8 +69,8 @@ zone = 1
 #Array Model ## Choose from (V10MUR1, V20MUR1, V20MP2R2)
 array_model = "V10MUR1"
 
-azure_virtualnetwork_peer_name = "GSE_PS_CBS_TF_NET"
-azure_virtualnetwork_peer_rg   = "GSE_PS_CBS_TF_NET_RG"
+azure_virtualnetwork_peer_name = "GSE_PS_CBS_TF_VNET_RG"
+azure_virtualnetwork_peer_rg = "GSE_PS_CBS_TF_NET"
 
 #Azure AD Group for JIT Approval
 jit_group_ids = ["eef91524-9f5e-4063-a10f-227270959da7"]
