@@ -100,3 +100,6 @@ variable "plan_publisher" {
 variable "plan_version" {
    type = string
 }
+variable "plan_name" {
+   type = string
+}
