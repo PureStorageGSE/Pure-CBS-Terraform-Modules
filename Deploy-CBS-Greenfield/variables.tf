@@ -103,3 +103,6 @@ variable "plan_version" {
 variable "plan_name" {
    type = string
 }
+variable "plan_product" {
+   type = string
+}
