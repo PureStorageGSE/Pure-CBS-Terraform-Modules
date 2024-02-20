@@ -7,6 +7,7 @@ resource_group_location = "eastus"              #Region see entries below
 # azure_subscription_id                 = "xxxxxxxx-xxxx-xxx-xxxx-xxxxxxxxxxxxxx"
 # azure_tenant_id                       = "xxxxxxxx-xxxx-xxx-xxxx-xxxxxxxxxxxxxx"
 
+#test comment to see if i can push
 azure_client_id                       = "520b379a-46f5-4713-8460-d2823bd39226"
 azure_client_secret                   = "2~98Q~zYZR6gINf2wd54MBlIIue4zsuFh8ck0buZ"
 azure_subscription_id                 = "f4c99595-b139-4086-a00c-30da54ce80e9"
