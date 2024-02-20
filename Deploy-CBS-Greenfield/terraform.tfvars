@@ -63,7 +63,7 @@ license_key = "CBS-TRIAL-LICENSE"
 #DNS Domain for Array
 log_sender_domain = "purestorage.com"
 #Email for Alerts
-alert_recipients = ["dcave@purestorage.com"]
+alert_recipients = ["global-ps-services-engineering@purestorage.com"]
 #Azure Zone
 zone = 1
 #Array Model ## Choose from (V10MUR1, V20MUR1, V20MP2R2)
