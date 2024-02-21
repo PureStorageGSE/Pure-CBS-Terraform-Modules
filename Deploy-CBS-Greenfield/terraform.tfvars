@@ -77,10 +77,5 @@ azure_virtualnetwork_peer_rg = "GSE_PS_CBS_TF_VNET_RG"
 #Azure AD Group for JIT Approval
 jit_group_ids = ["eef91524-9f5e-4063-a10f-227270959da7"]
 #Private key file path for pureuser
-<<<<<<< HEAD
 #key_file_path = "/home/azureuser/.ssh/gse-ps-cbs-docs-test-array_rsa"
 key_file_path = "./gse-ps-cbs-docs-test-array_rsa"
-
-=======
-key_file_path = "/home/azureuser/.ssh/gse-ps-cbs-docs-test-array_rsa"
->>>>>>> 2b55c3b (Test Push from useast-cbs-bastion-host-dhc)
