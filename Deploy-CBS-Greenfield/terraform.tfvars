@@ -7,6 +7,7 @@ resource_group_location = "eastus"              #Region see entries below
 # azure_subscription_id                 = "xxxxxxxx-xxxx-xxx-xxxx-xxxxxxxxxxxxxx"
 # azure_tenant_id                       = "xxxxxxxx-xxxx-xxx-xxxx-xxxxxxxxxxxxxx"
 
+#test comment to see if i can push
 azure_client_id                       = "520b379a-46f5-4713-8460-d2823bd39226"
 azure_client_secret                   = "2~98Q~zYZR6gINf2wd54MBlIIue4zsuFh8ck0buZ"
 azure_subscription_id                 = "f4c99595-b139-4086-a00c-30da54ce80e9"
@@ -75,6 +76,10 @@ azure_virtualnetwork_peer_rg = "GSE_PS_CBS_TF_VNET_RG"
 #Azure AD Group for JIT Approval
 jit_group_ids = ["eef91524-9f5e-4063-a10f-227270959da7"]
 #Private key file path for pureuser
+<<<<<<< HEAD
 #key_file_path = "/home/azureuser/.ssh/gse-ps-cbs-docs-test-array_rsa"
 key_file_path = "./gse-ps-cbs-docs-test-array_rsa"
 
+=======
+key_file_path = "/home/azureuser/.ssh/gse-ps-cbs-docs-test-array_rsa"
+>>>>>>> 2b55c3b (Test Push from useast-cbs-bastion-host-dhc)
