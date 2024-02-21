@@ -36,6 +36,8 @@ provider "cbs" {
   }
 }
 
+data "cbs_azure_plans" "azure_plans" {}
+
 resource "azurerm_marketplace_agreement" "plan" {
     publisher = "purestoragemarketplaceadmin"
     offer = "pure_storage_cloud_block_store_deployment"
