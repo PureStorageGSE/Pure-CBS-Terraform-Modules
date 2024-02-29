@@ -1,2 +1,4 @@
 Deploy-CBS-Greenfield/appove-marketplace-terms.sh
 Deploy-CBS-Greenfield/.terraform*
+Deploy-CBS-Greenfield/terraform.tfstate
+Deploy-CBS-Greenfield/terraform.tfstate.backup
