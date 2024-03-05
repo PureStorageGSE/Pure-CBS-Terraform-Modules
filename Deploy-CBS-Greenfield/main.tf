@@ -92,14 +92,14 @@ module "CBS-Identity" {
   depends_on = [ azurerm_resource_group.azure_rg ]
 }
 
-module "CBS-VNET-Peering" {
-  source                         = "../Modules/CBS-VNet-Peering"
-  resource_group_name            = azurerm_resource_group.azure_rg.name
-  cbs_vnet_id                    = module.CBS_vNET.cbs_vnet_id
-  cbs_vnet_name                  = module.CBS_vNET.cbs_vnet_name
-  azure_virtualnetwork_peer_name = var.azure_virtualnetwork_peer_name
-  azure_virtualnetwork_peer_rg   = var.azure_virtualnetwork_peer_rg
-}
+# module "CBS-VNET-Peering" {
+#   source                         = "../Modules/CBS-VNet-Peering"
+#   resource_group_name            = azurerm_resource_group.azure_rg.name
+#   cbs_vnet_id                    = module.CBS_vNET.cbs_vnet_id
+#   cbs_vnet_name                  = module.CBS_vNET.cbs_vnet_name
+#   azure_virtualnetwork_peer_name = var.azure_virtualnetwork_peer_name
+#   azure_virtualnetwork_peer_rg   = var.azure_virtualnetwork_peer_rg
+# }
 
 module "CBS-Array" {
   source                  = "../Modules/CBS-Array"
