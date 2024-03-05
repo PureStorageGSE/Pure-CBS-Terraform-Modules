@@ -57,6 +57,7 @@ variable "azure_vm_username" {
 }
 variable "azure_vm_password" {
   type = string
+  sensitive = true
 }
 
 variable "azure_virtualnetwork_peer_name" {
