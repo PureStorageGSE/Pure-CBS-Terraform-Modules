@@ -20,7 +20,8 @@ data "azurerm_virtual_network" "PS_ENG_VNET" {
 
 resource "azurerm_subnet" "subnet" {
   for_each = var.subnets
-  resource_group_name  = var.resource_group_name
+  # resource_group_name  = var.resource_group_name
+  resource_group_name = data.azurerm_virtual_network.PS_ENG_VNET.resource_group_name
   # virtual_network_name = azurerm_virtual_network.cbs_virtual_network.name
   virtual_network_name = data.azurerm_virtual_network.PS_ENG_VNET.name
   name                 = format("%s%s%s", var.resource_group_name, var.resource_group_location, each.value["name"])
