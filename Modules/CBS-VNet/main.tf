@@ -24,7 +24,8 @@ resource "azurerm_subnet" "subnet" {
   resource_group_name = data.azurerm_virtual_network.PS_ENG_VNET.resource_group_name
   # virtual_network_name = azurerm_virtual_network.cbs_virtual_network.name
   virtual_network_name = data.azurerm_virtual_network.PS_ENG_VNET.name
-  name                 = format("%s%s%s", var.resource_group_name, var.resource_group_location, each.value["name"])
+#  name                 = format("%s%s%s", var.resource_group_name, var.resource_group_location, each.value["name"])
+  name                 = format("%s%s", var.resource_group_name, each.value["name"])
   address_prefixes     = each.value["address_prefixes"]
   service_endpoints    = each.value["name"] == "cbs_subnet_sys" ? ["Microsoft.AzureCosmosDB", "Microsoft.KeyVault"] : []
 }
