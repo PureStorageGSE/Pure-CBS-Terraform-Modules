@@ -1,9 +1,12 @@
 output "cbs_vnet_name" {
-  value = azurerm_virtual_network.cbs_virtual_network.name
+  # value = azurerm_virtual_network.cbs_virtual_network.name
+  value = data.azurerm_virtual_network.PS_ENG_VNET.name
 }
 
 output "cbs_vnet_id" {
-  value = azurerm_virtual_network.cbs_virtual_network.id
+  # value = azurerm_virtual_network.cbs_virtual_network.id
+  value = data.azurerm_virtual_network.PS_ENG_VNET.id
+
 }
 
 
