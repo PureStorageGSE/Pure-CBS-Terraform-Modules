@@ -34,5 +34,5 @@ variable "cbs_vnet_name" {
 variable "cbs_subnet_vms_address" {
   type        = list(any)
   description = "the address space of the initior VMs subnet"
-  default     = ["10.10.0.0/24"]
+  default     = ["192.168.184.0/24"]
 }
