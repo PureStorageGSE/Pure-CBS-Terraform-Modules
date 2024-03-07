@@ -45,9 +45,7 @@ resource "azurerm_marketplace_agreement" "plan" {
 }
 
 resource "azurerm_resource_group" "azure_rg" {
-  name     = format("%s", var.resource_group_name)
-  # name     = format("%s%s", var.resource_group_name, var.resource_group_location)
-
+  name     = format("%s%s", var.resource_group_name, var.resource_group_location)
   location = var.resource_group_location
   tags     = var.tags
 }
