@@ -3,7 +3,7 @@
 resource_group_name     = "gse-ps-cbs-azure-lab-" #Prefix for Jump Start Deployment Resources
 resource_group_location = "eastus"              #Region see entries below
 
-use_vnet = var.existing_virtual_network_name
+use_vnet_name = format("%s%s%s", var.resource_group_name, var.resource_group_location, "-VNET")
 
 # azure_client_id                       = "xxxxxxxx-xxxx-xxx-xxxx-xxxxxxxxxxxxxx"
 # azure_client_secret                   = "xxxxxxxx-xxxx-xxx-xxxx-xxxxxxxxxxxxxx"
