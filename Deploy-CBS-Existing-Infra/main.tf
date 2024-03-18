@@ -54,7 +54,7 @@ resource "azurerm_marketplace_agreement" "plan" {
 // variables in terraform tfvars
 
 data "azurerm_resource_group" "azure_rg" {
-  name = resource_group_name
+  name = azurerm_resource_group.azure_rg.name
 }
 
 # module "CBS_vNET" {
@@ -64,7 +64,9 @@ data "azurerm_resource_group" "azure_rg" {
 #   tags                    = var.tags
 # }
 
-data "azurerm_"
+data "azurerm_virtual_network" "cbs_virtual_network" {
+  name = <some string>
+}
 
 module "CBS-NAT-GW" {
   source                  = "../Modules/CBS-NAT-GW"
