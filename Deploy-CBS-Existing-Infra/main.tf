@@ -54,7 +54,8 @@ resource "azurerm_marketplace_agreement" "plan" {
 // variables in terraform tfvars
 
 data "azurerm_resource_group" "azure_rg" {
-  name = var.existing_vnet_name
+  # name = var.existing_resource_group_name
+  name = format("%s%s", var.resource_group_name, var.resource_group_location)
 }
 
 # module "CBS_vNET" {
@@ -69,20 +70,54 @@ data "azurerm_virtual_network" "cbs_virtual_network" {
   resource_group_name = format("%s%s", var.resource_group_name, var.resource_group_location) 
 }
 
+
+//get ID's for each subnet
+
+data "azurerm_subnet" "cbs_subnet_sys_name" {
+  name = "gse-ps-cbs-azure-lab-eastuscbs_subnet_sys"
+  virtual_network_name = var.existing_vnet_name 
+  resource_group_name = format("%s%s", var.resource_group_name, var.resource_group_location)
+}
+
+
+ data "azurerm_subnet" "cbs_subnet_mgt_name" {
+  name = "gse-ps-cbs-azure-lab-eastuscbs_subnet_mgmt"
+  virtual_network_name = var.existing_vnet_name
+  resource_group_name = format("%s%s", var.resource_group_name, var.resource_group_location)
+}
+
+ data "azurerm_subnet" "cbs_subnet_iscsi_name" {
+  name = "gse-ps-cbs-azure-lab-eastuscbs_subnet_iscsi"
+  virtual_network_name = var.existing_vnet_name
+  resource_group_name = format("%s%s", var.resource_group_name, var.resource_group_location)
+}
+
+ data "azurerm_subnet" "cbs_subnet_repl_name" {
+  name = "gse-ps-cbs-azure-lab-eastuscbs_subnet_repl"
+  virtual_network_name = var.existing_vnet_name
+  resource_group_name = format("%s%s", var.resource_group_name, var.resource_group_location)
+}
+
+// end 
+
 module "CBS-NAT-GW" {
   source                  = "../Modules/CBS-NAT-GW"
-  resource_group_name     = azurerm_resource_group.azure_rg.name
+  # resource_group_name     = azurerm_resource_group.azure_rg.name
+  resource_group_name =  data.azurerm_resource_group.azure_rg.name
   resource_group_location = var.resource_group_location
-  cbs_system_subnet_id    = module.CBS_vNET.azure_subnet_id.cbs_subnet_sys
+  # cbs_system_subnet_id    = module.CBS_vNET.azure_subnet_id.cbs_subnet_sys
+  cbs_system_subnet_id = data.azurerm_subnet.cbs_subnet_sys_name.id
   tags                    = var.tags
 }
 
 module "VM-JUMPBOX" {
   source                  = "../Modules/VM-JUMPBOX"
-  resource_group_name     = azurerm_resource_group.azure_rg.name
+  # resource_group_name     = azurerm_resource_group.azure_rg.name
+  resource_group_name =  data.azurerm_resource_group.azure_rg.name
   resource_group_location = var.resource_group_location
   tags                    = var.tags
-  cbs_vnet_name           = module.CBS_vNET.cbs_vnet_name
+  # cbs_vnet_name           = module.CBS_vNET.cbs_vnet_name
+  cbs_vnet_name           = data.azurerm_virtual_network.cbs_virtual_network.name
   cbs_subnet_vms_address  = var.cbs_subnet_vms_address
   azure_vm_size           = var.azure_vm_size
   azure_vm_username       = var.azure_vm_username
@@ -91,37 +126,41 @@ module "VM-JUMPBOX" {
 
 module "CBS-Key-Vault" {
   source                  = "../Modules/CBS-Key-Vault"
-  resource_group_name     = azurerm_resource_group.azure_rg.name
+  # resource_group_name     = azurerm_resource_group.azure_rg.name
+  resource_group_name =  data.azurerm_resource_group.azure_rg.name  
   resource_group_location = var.resource_group_location
 }
 
 module "CBS-Identity" {
   source                  = "../Modules/CBS-Identity"
-  resource_group_name     = azurerm_resource_group.azure_rg.name
+  # resource_group_name     = azurerm_resource_group.azure_rg.name
+  resource_group_name =  data.azurerm_resource_group.azure_rg.name
   resource_group_location = var.resource_group_location
-  cbs_vnet_id             = module.CBS_vNET.cbs_vnet_id
-  depends_on = [ azurerm_resource_group.azure_rg ]
+  cbs_vnet_id             = data.azurerm_virtual_network.cbs_virtual_network.id
+  # depends_on = [ azurerm_resource_group.azure_rg ]
+  depends_on = [ data.azurerm_resource_group.azure_rg  ]
 }
 
-module "CBS-VNET-Peering" {
-  source                         = "../Modules/CBS-VNet-Peering"
-  resource_group_name            = azurerm_resource_group.azure_rg.name
-  cbs_vnet_id                    = module.CBS_vNET.cbs_vnet_id
-  cbs_vnet_name                  = module.CBS_vNET.cbs_vnet_name
-  azure_virtualnetwork_peer_name = var.azure_virtualnetwork_peer_name
-  azure_virtualnetwork_peer_rg   = var.azure_virtualnetwork_peer_rg
-}
+# module "CBS-VNET-Peering" {
+#   source                         = "../Modules/CBS-VNet-Peering"
+#   # resource_group_name            = azurerm_resource_group.azure_rg.name
+#   resource_group_name            = data.azurerm_resource_group.azure_rg.name
+#   cbs_vnet_id                    = data.azurerm_virtual_network.cbs_virtual_network.id
+#   cbs_vnet_name                  = data.azurerm_virtual_network.cbs_virtual_network.name
+#   azure_virtualnetwork_peer_name = var.azure_virtualnetwork_peer_name
+#   azure_virtualnetwork_peer_rg   = var.azure_virtualnetwork_peer_rg
+# }
 
 module "CBS-Array" {
   source                  = "../Modules/CBS-Array"
   array_name              = var.array_name
-  resource_group_name     = azurerm_resource_group.azure_rg.name
+  resource_group_name =  data.azurerm_resource_group.azure_rg.name
   resource_group_location = var.resource_group_location
-  cbs_vnet_id             = module.CBS_vNET.cbs_vnet_id
-  cbs_subnet_mgmt_name    = module.CBS_vNET.azure_subnet_name.cbs_subnet_mgmt
-  cbs_subnet_iscsi_name   = module.CBS_vNET.azure_subnet_name.cbs_subnet_iscsi
-  cbs_subnet_repl_name    = module.CBS_vNET.azure_subnet_name.cbs_subnet_repl
-  cbs_subnet_sys_name     = module.CBS_vNET.azure_subnet_name.cbs_subnet_sys
+  cbs_vnet_id             = data.azurerm_virtual_network.cbs_virtual_network.id
+  cbs_subnet_mgmt_name    = data.azurerm_subnet.cbs_subnet_mgt_name.name
+  cbs_subnet_iscsi_name   = data.azurerm_subnet.cbs_subnet_iscsi_name.name
+  cbs_subnet_repl_name    = data.azurerm_subnet.cbs_subnet_repl_name.name
+  cbs_subnet_sys_name     = data.azurerm_subnet.cbs_subnet_sys_name.name
   license_key             = var.license_key
   cbs_key_vault           = module.CBS-Key-Vault.cbs_key_vault_id
   log_sender_domain       = var.log_sender_domain

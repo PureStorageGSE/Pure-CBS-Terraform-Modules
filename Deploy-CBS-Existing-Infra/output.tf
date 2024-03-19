@@ -1,3 +1,7 @@
+output "cbs_subnet_sys" {
+  value = data.azurerm_subnet.cbs_subnet_sys_name
+}
+
 output "cbs_azure_deployed_plan" {
   value = module.CBS-Array.cbs_azure_deployed_plans
 }

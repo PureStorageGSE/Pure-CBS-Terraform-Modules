@@ -8,6 +8,9 @@ variable "resource_group_location" {
   description = "RG location in Azure"
 }
 
+variable "existing_resource_group_name" {
+  type = string
+}
 variable "existing_vnet_name" {
   type = string
   description = "Vnet name used for deploying into CBS"  
