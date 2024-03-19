@@ -8,6 +8,7 @@ variable "resource_group_location" {
   description = "RG location in Azure"
 }
 
+
 variable "existing_resource_group_name" {
   type = string
 }

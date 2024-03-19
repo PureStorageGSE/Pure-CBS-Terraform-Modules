@@ -107,11 +107,19 @@ module "CBS-NAT-GW" {
   resource_group_location = var.resource_group_location
   # cbs_system_subnet_id    = module.CBS_vNET.azure_subnet_id.cbs_subnet_sys
   cbs_system_subnet_id = data.azurerm_subnet.cbs_subnet_sys_name.id
-  tags                    = var.tags
+}
+
+module "CBS-NAT-GW" {
+  source                  = "../Modules/CBS-NAT-GW"
+  resource_group_name     = azurerm_resource_group.azure_rg.name
+  resource_group_location = var.resource_group_location
+  cbs_system_subnet_id    = module.CBS_vNET.azure_subnet_id.cbs_subnet_sys
+  tags = var.tags
 }
 
 module "VM-JUMPBOX" {
   source                  = "../Modules/VM-JUMPBOX"
+
   # resource_group_name     = azurerm_resource_group.azure_rg.name
   resource_group_name =  data.azurerm_resource_group.azure_rg.name
   resource_group_location = var.resource_group_location
@@ -150,10 +158,16 @@ module "CBS-Identity" {
 #   azure_virtualnetwork_peer_name = var.azure_virtualnetwork_peer_name
 #   azure_virtualnetwork_peer_rg   = var.azure_virtualnetwork_peer_rg
 # }
+#  resource_group_name     = azurerm_resource_group.azure_rg.name
+#  resource_group_location = var.resource_group_location
+#  cbs_vnet_id             = module.CBS_vNET.cbs_vnet_id
+#  depends_on = [ azurerm_resource_group.azure_rg ]
+#}
 
 module "CBS-Array" {
   source                  = "../Modules/CBS-Array"
   array_name              = var.array_name
+
   resource_group_name =  data.azurerm_resource_group.azure_rg.name
   resource_group_location = var.resource_group_location
   cbs_vnet_id             = data.azurerm_virtual_network.cbs_virtual_network.id
@@ -161,6 +175,7 @@ module "CBS-Array" {
   cbs_subnet_iscsi_name   = data.azurerm_subnet.cbs_subnet_iscsi_name.name
   cbs_subnet_repl_name    = data.azurerm_subnet.cbs_subnet_repl_name.name
   cbs_subnet_sys_name     = data.azurerm_subnet.cbs_subnet_sys_name.name
+
   license_key             = var.license_key
   cbs_key_vault           = module.CBS-Key-Vault.cbs_key_vault_id
   log_sender_domain       = var.log_sender_domain
