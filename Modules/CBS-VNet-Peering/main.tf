@@ -24,9 +24,9 @@ resource "azurerm_virtual_network_peering" "cbs_tf" {
   virtual_network_name      = var.cbs_vnet_name
   remote_virtual_network_id = data.azurerm_virtual_network.tf_vnet.id
   # configure routing between vnets
-  allow_forwarded_traffic = true
-  allow_virtual_network_access = true
-  allow_gateway_transit = true
-  use_remote_gateways = true
+  # allow_forwarded_traffic = true
+  # allow_virtual_network_access = true
+  # allow_gateway_transit = true
+  # use_remote_gateways = true
 
 }
