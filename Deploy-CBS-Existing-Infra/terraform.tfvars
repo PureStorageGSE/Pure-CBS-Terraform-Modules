@@ -6,7 +6,7 @@ resource_group_location = "eastus"              #Region see entries below
 existing_resource_group_name = "gse-ps-cbs-azure-lab-"
 # existing_vnet_name = format("%s%s%s", var.resource_group_name, var.resource_group_location, "-VNET")
 existing_vnet_name = "gse-ps-cbs-azure-lab-eastus-VNET"
-use_vnet_name = format("%s%s%s", var.resource_group_name, var.resource_group_location, "-VNET")
+# use_vnet_name = format("%s%s%s", var.resource_group_name, var.resource_group_location, "-VNET")
 
 # azure_client_id                       = "xxxxxxxx-xxxx-xxx-xxxx-xxxxxxxxxxxxxx"
 # azure_client_secret                   = "xxxxxxxx-xxxx-xxx-xxxx-xxxxxxxxxxxxxx"
