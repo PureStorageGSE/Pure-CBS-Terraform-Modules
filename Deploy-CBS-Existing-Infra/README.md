@@ -4,18 +4,20 @@
 
 This terraform code will deploy a CBS Array into an existing Azure Resource Group which contains a Vnet and four subnets.
 
-
 ### If you want to route between your VNets from On Premise or another Azure subscription
 
 You may need to setup the Vnet peering between your managment and CBS vnet by uncommenting the Module CBS-VNet-Peering code in `main.tf` file on lines `144-152`, unless you have already done this.
 
 The Modules/CBS-VNet-Peering  `main.tf` code has options to activate this which are commented out and follow the four traffic routing options in the Peering section in the Azure UI. These can be used by uncommenting lines `15-17 & 27-30`
 
+
+| ![](assets/Azure-Peer-To-CBS-UI.png)  | ![](assets/Azure-Peer-From-CBS-UI.png)  |
+| --- | --- |
+|   |   |
+
 Vis.
 
-
 ![](assets/20240320_122712_CBS-Generic-Two-RG-Deployment.png)
-
 
 ## How to Use
 
