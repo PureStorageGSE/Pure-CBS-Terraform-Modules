@@ -1,10 +1,10 @@
 # Deploy CBS Into an Existing Azure Subscription with a specific resource group
 
-By Daniel Cave, Pure Storage, Global Services Engineering, March 2024
+By _Daniel Cave, Pure Storage, Global Services Engineering, March 2024_
 
 ## What does this code do
 
-This terraform code will deploy a CBS Array into an existing Azure Resource Group which contains a Vnet and four requisite CBS subnets.
+This terraform code will deploy a CBS Array into an existing Azure Resource Group which contains a Vnet and four subnets.
 
 ### If you want to route between your VNets from On Premise or another Azure subscription
 
@@ -34,3 +34,18 @@ The `Modules/CBS-VNet-Peering/main.tf`code has options to activate this which ar
 - a VNET and four subnets that you want to use for CBS. Namely, system, management, iscsi and replication
 
 This code will deploy the dependencies and CBS Array into the VNet which you choose along with the VNet peering between the Vnets.
+
+3. SSH to your deployment VM (in step 1)
+4. Clone this repository - if you haven't already
+5. Change to this directory `cd Deploy-CBS-Existing-Infra`
+6. Edit the `terraform.tfvars` file and modify all the variables required on lines:
+
+   - Resource group name and region location `lines 2,3`
+   - Existing Resource Group Name and Vnet  `lines 6 & 8`
+   - Azure Client, Subscription and Tennant details `lines 11-14`
+   - Azure Jump box VM username and password `lines 24,25`
+   - CBS Version to deploy "Aka Plan name" `line 27` **This should be the latest version of CBS**
+   -
+7. Run `terraform init ; terraform plan` to check what is going to be deployed
+8. Deploy the CBS dependencies and array using `terraform apply --auto-approve` to run with out human confirmation.
+9. Grab a coffee for ~30mins
