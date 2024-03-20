@@ -45,7 +45,6 @@ This code will deploy the dependencies and CBS Array into the VNet which you cho
    - Azure Client, Subscription and Tennant details `lines 11-14`
    - Azure Jump box VM username and password `lines 24,25`
    - CBS Version to deploy "Aka Plan name" `line 27` **This should be the latest version of CBS**
-   -
 7. Run `terraform init ; terraform plan` to check what is going to be deployed
 8. Deploy the CBS dependencies and array using `terraform apply --auto-approve` to run with out human confirmation.
 9. Grab a coffee for ~30mins
