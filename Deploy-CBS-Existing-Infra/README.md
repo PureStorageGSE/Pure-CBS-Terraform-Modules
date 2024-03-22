@@ -47,7 +47,8 @@ This code will deploy the dependencies and CBS Array into the VNet which you cho
    - CBS Version to deploy "Aka Plan name" `line 27` **This should be the latest version of CBS**
 7. Edit the `approve-marketplace-terms.sh` script if you're using a new version of CBS in Azure and/or with a different Azure account/subscription to approve the marketplace terms for CBS and to import that subscription plan into Terraform. This ensures that the Terraform knows about these items and can deploy the CBS array without errors. Save and exit :)
 8. Run the `approve-marketplace-terms.sh` script. It should look like this:
-[![asciicast](https://asciinema.org/a/VDyqiYIEnc3RPPiLDV4GnJ0wG.svg)]
+[![asciicast](https://asciinema.org/a/VDyqiYIEnc3RPPiLDV4GnJ0wG.svg)](https://asciinema.org/a/VDyqiYIEnc3RPPiLDV4GnJ0wG) 
+
 
 9. Run `terraform init ; terraform plan` to check what is going to be deployed
 10. Deploy the CBS dependencies and array using `terraform apply --auto-approve` to run with out human confirmation.
