@@ -35,7 +35,7 @@ The `Modules/CBS-VNet-Peering/main.tf`code has options to activate this which ar
 
 This code will deploy the dependencies and CBS Array into the VNet which you choose along with the VNet peering between the Vnets.
 
-3. SSH to your deployment VM (in step 1)
+3. SSH to your deployment VM (in step 1) - ensure that you have Vnet peering setup between your separate Deployment RG/VNET and the CBS RG Vnet
 4. Clone this repository - if you haven't already
 5. Change to this directory `cd Deploy-CBS-Existing-Infra`
 6. Edit the `terraform.tfvars` file and modify all the variables required on lines:
@@ -53,7 +53,7 @@ This code will deploy the dependencies and CBS Array into the VNet which you cho
 9. Run `terraform init ; terraform plan` to check what is going to be deployed
 10. Deploy the CBS dependencies and array using `terraform apply --auto-approve` to run with out human confirmation.
 11. Grab a coffee for ~30mins and check back to see if it's deployed
-
+<!-- 
 Here's one we deployed earlier !
 
-![](https://asciinema.org/12356)
+![](https://asciinema.org/12356) -->
