@@ -14,7 +14,7 @@ Vis.
 | ![](assets/20240320_122712_CBS-Generic-Two-RG-Deployment.png) |
 | :-------------------------------------------------------------: |
 
-For testing purposes we used a /21 for each separate vnet and setup Vnet peer routing to allow On premise traffic access the CBS array from the management network via a site to site VPN (via the Virtual Network Gateway). You may already have this connectivity in place using another connection 
+For testing purposes we used a `/21` CIDR range for each separate vnet and setup Vnet peer routing to allow On premise traffic access the CBS array from the management network via a site to site VPN (via the Virtual Network Gateway). You may already have this connectivity in place using another connection 
 
 You may need to setup the Vnet peering between your managment and CBS vnet by uncommenting the Module CBS-VNet-Peering code in `main.tf` file on lines `144-152`, unless you have already done this.
 
@@ -47,4 +47,8 @@ This code will deploy the dependencies and CBS Array into the VNet which you cho
    - CBS Version to deploy "Aka Plan name" `line 27` **This should be the latest version of CBS**
 7. Run `terraform init ; terraform plan` to check what is going to be deployed
 8. Deploy the CBS dependencies and array using `terraform apply --auto-approve` to run with out human confirmation.
-9. Grab a coffee for ~30mins
+9. Grab a coffee for ~30mins and check back to see if it's deployed
+
+Here's one we deployed earlier !
+
+![](https://asciinema.org/12356)
