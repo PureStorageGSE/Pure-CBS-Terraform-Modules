@@ -63,7 +63,7 @@ tags = {
 }
 
 #CBS Array Name
-array_name = "CBS-Greenfield-GSE-PS-lab"
+array_name = "gse-ps-eng-cbs-test-array-01"
 
 
 #CBS License key from Pure1
