@@ -16,7 +16,7 @@ Vis.
 
 For testing purposes we used a `/21` CIDR range for each separate vnet and setup Vnet peer routing to allow On premise traffic access the CBS array from the management network via a site to site VPN (via the Virtual Network Gateway). You may already have this connectivity in place using another connection 
 
-You may need to setup the Vnet peering between your managment and CBS vnet by uncommenting the Module CBS-VNet-Peering code in `main.tf` file on lines `144-152`, unless you have already done this.
+You may _also_ need to setup the Vnet peering between your managment and CBS vnet by uncommenting the Module CBS-VNet-Peering code in `main.tf` file on lines `144-152`, unless you have already done this. This will allow your users to access the CBS management network as well as the CBS iscsi subnet when allocating storage to the hosts using it.
 
 The `Modules/CBS-VNet-Peering/main.tf`code has options to activate this which are commented out and setup the following traffic routing options in the Peering section in the Azure UI. These can be used by uncommenting lines`15-17 & 27-30`
 
